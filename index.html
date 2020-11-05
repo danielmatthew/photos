@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Photos</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Photos</title>
+    <link rel="preconnect"
+          href="https://res.cloudinary.com">
+    <link rel="preload"
+          href="https://res.cloudinary.com/danmatthew/image/upload/c_thumb,w_200,g_face/v1593720656/_DSC2105_yxqwvc.jpg"
+          as="image">
     <style>
       * + * {
         box-sizing: border-box;
@@ -15,67 +20,54 @@
       }
 
       body {
-        overflow-x: hidden;
+        margin: 0;
+        padding: 2ch;
       }
 
-      section {
-        display: grid;
-        gap: 1rem;
-        grid-template-columns: repeat(5, 1fr);
-      }
-
-      :target {
-        /* position: relative;
-        top: 0;
-        right: 0;
-        left: 0; */
-        /* transform: scale(1.5, 1.5); */
-        visibility: visible;
-      }
-
-      div {
-        position: relative;
-        height: 50vh;
+      figure {
+        margin: 0 auto;
         width: 100%;
-        outline: 1px solid rebeccapurple;
       }
 
-      div > img {
-        visibility: hidden;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
+      .c-hero {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+        background-image: url('https://res.cloudinary.com/danmatthew/image/upload/c_thumb,w_200,g_face/v1593720656/_DSC2105_yxqwvc.jpg');
+        background-size: cover;
+        filter: blur(2rem);
+        transition: 0.25s filter ease-out;
       }
     </style>
   </head>
   <body>
     <main>
       <h1>Photos</h1>
-      <div>
-        <img id="photo-1" src="https://picsum.photos/id/1001/300/200" alt=""/>
-        <img id="photo-2" src="https://picsum.photos/id/1002/300/200" alt=""/>
-        <img id="photo-3" src="https://picsum.photos/id/1003/300/200" alt=""/>
-        <img id="photo-4" src="https://picsum.photos/id/1004/300/200" alt=""/>
-        <img id="photo-5" src="https://picsum.photos/id/1005/300/200" alt=""/>
-      </div>
-      <section>
-        <a href="#photo-1"
-          ><img src="https://picsum.photos/id/1001/300/200" alt=""
-        /></a>
-        <a href="#photo-2"
-          ><img  src="https://picsum.photos/id/1002/300/200" alt=""
-        /></a>
-        <a href="#photo-3"
-          ><img  src="https://picsum.photos/id/1003/300/200" alt=""
-        /></a>
-        <a href="#photo-4"
-          ><img  src="https://picsum.photos/id/1004/300/200" alt=""
-        /></a>
-        <a href="#photo-5"
-          ><img  src="https://picsum.photos/id/1005/300/200" alt=""
-        /></a>
-      </section>
+      <figure>
+        <picture
+          onload="performance.clearMarks('photo-mark'); performance.mark('photo-mark');">
+          <source
+            srcset="https://res.cloudinary.com/danmatthew/image/upload/ar_16:10,c_scale,w_0.7,q_auto,f_auto,dpr_1.0/v1593720656/_DSC2105_yxqwvc.jpg,
+                    https://res.cloudinary.com/danmatthew/image/upload/ar_16:10,c_scale,w_0.7,q_auto,f_auto/v1593720656/_DSC2105_yxqwvc.jpg 2x">
+          <source
+            srcset="https://res.cloudinary.com/danmatthew/image/upload/c_crop,f_auto,dpr_1.0,g_auto,h_1.0,q_auto,w_0.3,x_0/v1593720656/_DSC2105_yxqwvc.jpg,
+                    https://res.cloudinary.com/danmatthew/image/upload/c_crop,f_auto,g_auto,h_1.0,q_auto,w_0.3,x_0/v1593720656/_DSC2105_yxqwvc.jpg 2x"
+            media="screen and (orientation: portrait)">
+
+          <img
+            class="c-hero"
+            height="100vh"
+            width="100vw"
+            srcset="https://res.cloudinary.com/danmatthew/image/upload/ar_16:10,c_scale,w_0.7,q_auto,f_auto,dpr_1.0/v1593720656/_DSC2105_yxqwvc.jpg, https://res.cloudinary.com/danmatthew/image/upload/ar_16:10,c_scale,w_0.7,q_auto,f_auto/v1593720656/_DSC2105_yxqwvc.jpg 2x"
+            src="https://res.cloudinary.com/danmatthew/image/upload/ar_16:10,c_scale,w_0.7,q_auto,f_auto,dpr_1.0/v1593720656/_DSC2105_yxqwvc.jpg"
+            alt="The Molino Stucky factory pictured from across the Rialto canal in Venice, Italy."
+            onload="this.style.filter = 'blur(0)'">
+        </picture>
+        <script>
+          performance.clearMarks('photo-mark');
+          performance.mark('photo-mark');
+        </script>
+      </figure>
     </main>
   </body>
 </html>
