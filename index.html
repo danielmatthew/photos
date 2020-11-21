@@ -24,9 +24,15 @@
         padding: 2ch;
       }
 
+      h1 {
+        padding-block-end: 0.67em;
+        border-bottom: 1px solid black;
+        margin-block-end: 1.3em;
+      }
+
       figure {
-        margin: 0 auto;
-        width: 100%;
+        max-width: 60rem;
+        margin: 0;
       }
 
       .c-hero {
@@ -41,8 +47,10 @@
     </style>
   </head>
   <body>
-    <main>
+    <header>
       <h1>Photos</h1>
+    </header>
+    <main>
       <figure>
         <picture
           onload="performance.clearMarks('photo-mark'); performance.mark('photo-mark');">
